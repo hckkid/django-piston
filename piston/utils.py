@@ -123,7 +123,7 @@ def throttle(max_requests, timeout=60*60, extra=''):
         if request.user.is_authenticated():
             ident = request.user.username
         else:
-            ident = request.META.get('REMOTE_ADDR', None)
+            ident = request.META.get('HTTP_X_ORIGINAL_FORWARDED_FOR', None)
 
         if hasattr(request, 'throttle_extra'):
             """
