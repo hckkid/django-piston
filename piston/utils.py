@@ -124,6 +124,7 @@ def throttle(max_requests, timeout=60*60, extra=''):
             ident = request.user.username
         else:
             ident = request.META.get('HTTP_X_ORIGINAL_FORWARDED_FOR', None)
+            print "Got ip : "+str(ident)
 
         if hasattr(request, 'throttle_extra'):
             """
